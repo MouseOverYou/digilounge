@@ -5,6 +5,8 @@ var scene = null;
 var sceneToRender = null;
 var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
 
+var lightLinks
+
 /******* Add the create scene function ******/
 var createScene = function () {
 
@@ -13,7 +15,7 @@ var createScene = function () {
 
     var assetsManager = new BABYLON.AssetsManager(scene)
     LoadAssets(scene, assetsManager)
-    camera = new BABYLON.ArcRotateCamera("Camera", 90 * (Math.PI / 180), 82 * (Math.PI / 180), 40, new BABYLON.Vector3(0, 18, 0), scene);
+    camera = new BABYLON.ArcRotateCamera("Camera", 90 * (Math.PI / 180), 82 * (Math.PI / 180), 25, new BABYLON.Vector3(0, 18, 0), scene);
     camera.minZ = 0.1
     camera.panningDistanceLimit = 0;
     camera.pinchToPanMaxDistance = 0;
@@ -22,16 +24,16 @@ var createScene = function () {
     camera.upperRadiusLimit = 100
     camera.angularSensibilityX = 3000
     camera.angularSensibilityy = 3000
-    camera.wheelPrecision = 100
+    camera.wheelPrecision = 10
     camera.attachControl(canvas, true, true, false);
 
     lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, -90), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
-    lightLinks.intensity = 0
+    lightLinks.intensity = 0.5
 
     lightRechts = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(120, -41, -90), scene);
     lightRechts.position = new BABYLON.Vector3(-1, 1, 0);
-    lightRechts.intensity = 0
+    lightRechts.intensity = 0.5
 
     // Sky material
     var skyboxMaterial = new BABYLON.SkyMaterial("skyMaterial", scene);

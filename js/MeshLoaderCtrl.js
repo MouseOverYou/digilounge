@@ -62,15 +62,15 @@ function LoadAssets(scene, assetsManager) {
         sphere.isVisible = true
         pbr.baseColor = new BABYLON.Color3(1.0, 1, 1);
         pbr.emissiveColor = new BABYLON.Color3(1.0, 1, 1);
-
-        //handle All at once
-        scene.materials.forEach(mat => {
-            //add reflections
-            mat.reflectionTexture = hdrTexture;
-        });
-
+        AddGlow()
+        //AddShadows()
+        ChangeMaterialProperties()
         AddStreamingToTexture()
-
+        scene.meshes.forEach(mesh => {
+            if (mesh.name == "Height 180"){
+                mesh.setEnabled(false)
+            }
+        });
 
 
     }
