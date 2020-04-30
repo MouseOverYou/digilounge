@@ -1,9 +1,9 @@
 
 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
 var engine = null;
-        var scene = null;
-        var sceneToRender = null;
-        var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
+var scene = null;
+var sceneToRender = null;
+var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
 
 /******* Add the create scene function ******/
 var createScene = function () {
@@ -51,18 +51,24 @@ var createScene = function () {
 /******* End of the create scene function ******/
 
 engine = createDefaultEngine();
-        if (!engine) throw 'engine should not be null.';
-        scene = createScene();;
-        sceneToRender = scene
+if (!engine) throw 'engine should not be null.';
+scene = createScene();;
+sceneToRender = scene
 
-        engine.runRenderLoop(function () {
-            if (sceneToRender) {
-                sceneToRender.render();
-            }
-        });
+engine.runRenderLoop(function () {
+    if (sceneToRender) {
+        sceneToRender.render();
+    }
+});
 
-        // Resize
-        window.addEventListener("resize", function () {
-            engine.resize();
-        });
+// Resize
+window.addEventListener("resize", function () {
+    engine.resize();
+});
 
+
+
+/*
+TO DO:
+Mute video streaming: cvurrent fake mute
+*/
