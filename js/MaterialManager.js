@@ -10,7 +10,7 @@ function ChangeMaterialProperties() {
     var leatherNRM = new BABYLON.Texture("./assets/textures/Leather026_2K_Normal.jpg", scene, true, false)
     var woodDiff = new BABYLON.Texture("./assets/textures/wood_base.jpg", scene, true, false)
     var woodNRM = new BABYLON.Texture("./assets/textures/wood_normal.jpg", scene, true, false)
-    woodNRM.level = 0.5
+    woodNRM.level = 0.25
     var woodRough = new BABYLON.Texture("./assets/textures/wood_metallic.jpg", scene, true, false)
     woodTexts = []
     woodTexts.push(woodDiff)
@@ -83,12 +83,27 @@ function ChangeMaterialProperties() {
         else if (mat.name == "newSticker"){
             //mat.albedoColor = new BABYLON.Color3.Black()
         }
+        else if(mat.name == "bild"){
+            mat.emissiveTexture = mat.albedoTexture
+            mat.emissiveColor = new BABYLON.Color3.FromHexString("#313131")
+        }
     })  
+
+    sphereL.material = scene.getMaterialByName("Leuchte")
+    sphereR.material = scene.getMaterialByName("Leuchte")
 
 
 
 
     /*
+        scene.meshes.forEach(mesh =>{
+        if(mesh.name.startsWith("_hole.1 4")){
+            var spotHole = new BABYLON.SpotLight("spotHole", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(0, -1, 0), 95 * (Math.PI / 180), 2, scene);
+            spotHole.position = mesh.position
+            spotHole.intensity = 35000
+            
+        }
+    })
     var screenTex = new BABYLON.Texture("./assets/ascree.jpg", scene, true, false)
     var perlinText = new BABYLON.NoiseProceduralTexture("perlin", 254, scene);
 
@@ -100,11 +115,6 @@ function ChangeMaterialProperties() {
     iconGlassOff.alpha = 0.85
     */
 
-    //handle All at once
-    scene.materials.forEach(mat => {
-        //add reflections
-        mat.reflectionTexture = hdrTexture;
-    });
     
 }
 
@@ -141,11 +151,11 @@ function AddGlow(){
 }
 
 function AddShadows(){
-    var generator = new BABYLON.ShadowGenerator(512, lightLinks);
-        generator.useContactHardeningShadow = true;
-        generator.bias = 0.01;
-        generator.normalBias= 0.05;
-		generator.contactHardeningLightSizeUVRatio = 0.08;
+    var generator = new BABYLON.ShadowGenerator(4096*4, lightLinks);
+        //generator.useContactHardeningShadow = true;
+        //generator.bias = 0.01;
+        //generator.normalBias= 0.05;
+		//generator.contactHardeningLightSizeUVRatio = 0.08;
 
         for (var i = 0; i < scene.meshes.length; i++) {
             generator.addShadowCaster(scene.meshes[i]);    
@@ -153,4 +163,3 @@ function AddShadows(){
         }
 
 }
-

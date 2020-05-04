@@ -39,7 +39,7 @@ function AddStreamingToTexture() {
         videoMat.bumpTexture.level = 0
         videoMat.bumpTexture.uScale =1
         videoMat.bumpTexture.vScale =1
-        
+        videoMat.emissiveColor = new BABYLON.Color3.FromHexString("#313131")
 
 
         htmlVideo = videoTexture.video;
@@ -78,7 +78,7 @@ function AddStreamingToTexture() {
 
 function changeVideoMat(){
     TV.material = videoMat;
-    htmlVideo.volume  = 0;
+    htmlVideo.volume  = 1;
 }
 
 let muted = false

@@ -69,14 +69,7 @@ function LoadAssets(scene, assetsManager) {
     var pbr
     assetsManager.onFinish = function (task) {
 
-        sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 0.15 }, scene);
-        sphere.position = new BABYLON.Vector3(0.005, 2.29, 0)
-        sphere.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3)
-        pbr = new BABYLON.PBRMetallicRoughnessMaterial("pbr", scene);
-        sphere.material = pbr;
-        sphere.isVisible = true
-        pbr.baseColor = new BABYLON.Color3(1.0, 1, 1);
-        pbr.emissiveColor = new BABYLON.Color3(1.0, 1, 1);
+
         AddGlow()
         //AddShadows()
         ChangeMaterialProperties()

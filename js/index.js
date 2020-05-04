@@ -29,11 +29,26 @@ var createScene = function () {
 
     lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, -90), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
-    lightLinks.intensity = 0.5
+    lightLinks.intensity = 0.35
 
-    lightRechts = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(120, -41, -90), scene);
+    lightRechts = new BABYLON.DirectionalLight("lightRechts", new BABYLON.Vector3(120, -41, -90), scene);
     lightRechts.position = new BABYLON.Vector3(-1, 1, 0);
-    lightRechts.intensity = 0.5
+    lightRechts.intensity = 0.35
+
+    var spotLightL = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
+    spotLightL.intensity = 8000
+
+    var spotLightR = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
+    spotLightR.intensity = 8000
+
+    sphereL = BABYLON.MeshBuilder.CreateSphere("sphereL", { diameter: 3 }, scene);
+    sphereL.parent = spotLightL
+    sphereL.visibility = 0.2
+
+    sphereR = BABYLON.MeshBuilder.CreateSphere("sphereR", { diameter: 3 }, scene);
+    sphereR.parent = spotLightR
+    sphereR.visibility = 0.2
+
 
     // Sky material
     var skyboxMaterial = new BABYLON.SkyMaterial("skyMaterial", scene);
@@ -46,7 +61,12 @@ var createScene = function () {
     var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
     skybox.material = skyboxMaterial;
 
+    //PostEffects(scene)
 
+    scene.onPointerUp = function () {
+
+        htmlVideo.play()
+}
 
     return scene;
 };
