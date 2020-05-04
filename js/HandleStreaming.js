@@ -1,4 +1,4 @@
-let TV, videoMat, htmlVideo
+let TV, videoMat, htmlVideo, dotsText
 
 function AddStreamingToTexture() {
 
@@ -30,6 +30,8 @@ function AddStreamingToTexture() {
         videoMat.reflectionTexture = hdrTexture
         videoMat.metallic = 0
         videoMat.roughness = 0
+
+        
         dotsText = new BABYLON.Texture("./assets/videoDots2.jpg", scene, true, false)
         ambientScreen = new BABYLON.Texture("./assets/screenAmbient.jpg", scene, true, false)
         videoMat.ambientTexture = ambientScreen
@@ -37,6 +39,7 @@ function AddStreamingToTexture() {
         videoMat.bumpTexture.level = 0
         videoMat.bumpTexture.uScale =1
         videoMat.bumpTexture.vScale =1
+        
 
 
         htmlVideo = videoTexture.video;
@@ -52,9 +55,7 @@ function AddStreamingToTexture() {
                 TV.actionManager.registerAction(
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,
                         function (event) {
-                            
                             htmlVideo.play();
-                            
                         })
                 );
             });
@@ -66,7 +67,6 @@ function AddStreamingToTexture() {
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,
                         function (event) {
                             htmlVideo.play();
-                            
                         })
                 );
             });
@@ -78,7 +78,7 @@ function AddStreamingToTexture() {
 
 function changeVideoMat(){
     TV.material = videoMat;
-    htmlVideo.volume  = 1;
+    htmlVideo.volume  = 0;
 }
 
 let muted = false

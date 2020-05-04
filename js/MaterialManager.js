@@ -6,13 +6,38 @@ function ChangeMaterialProperties() {
     var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
     var blackBay = new BABYLON.Color3.FromHexString("#000000");
 
+
     var leatherNRM = new BABYLON.Texture("./assets/textures/Leather026_2K_Normal.jpg", scene, true, false)
+    var woodDiff = new BABYLON.Texture("./assets/textures/wood_base.jpg", scene, true, false)
+    var woodNRM = new BABYLON.Texture("./assets/textures/wood_normal.jpg", scene, true, false)
+    woodNRM.level = 0.5
+    var woodRough = new BABYLON.Texture("./assets/textures/wood_metallic.jpg", scene, true, false)
+    woodTexts = []
+    woodTexts.push(woodDiff)
+    woodTexts.push(woodNRM)
+    woodTexts.push(woodRough)
+    woodTexts.forEach(text =>{
+        text.uScale = 6
+        text.vScale = 6
+        //text.wAng = Math.PI/2
+    })
+
+
+    var woodMat = new BABYLON.PBRSpecularGlossinessMaterial("woodMat", scene);
+    woodMat.diffuseTexture = woodDiff
+    woodMat.normalTexture = woodNRM
+    woodMat.environmentTexture = hdrTexture
+    woodMat.specularGlossinessTexture = woodRough
+    woodMat.glossiness = 0.9;
+
+    scene.getMeshByName("floor").material = woodMat
+
 
     scene.materials.forEach(mat => {
         mat.reflectionTexture = hdrTexture;
         if(mat.name.startsWith("sit")){
             mat.metallic = 0;
-            mat.roughness = 0.1;
+            mat.roughness = 0.2;
             mat.bumpTexture = leatherNRM
             mat.bumpTexture.level = 0.13
             mat.bumpTexture.uScale = 0.15
@@ -41,6 +66,22 @@ function ChangeMaterialProperties() {
         }
         else if (mat.name == "Leuchte"){
             mat.emissiveColor =  new BABYLON.Color3.FromHexString("#75625F")
+        }
+        else if (mat.name == "glissBottle"){
+            mat.metallic = 0.65
+            mat.roughness = 0.1
+        }
+
+        else if (mat.name == "deckelMat"){
+            mat.metallic = 0.65
+            mat.roughness = 0.1
+        }
+        else if (mat.name == "glissMetal"){
+            mat.metallic = 1
+            mat.roughness = 0
+        }
+        else if (mat.name == "newSticker"){
+            //mat.albedoColor = new BABYLON.Color3.Black()
         }
     })  
 

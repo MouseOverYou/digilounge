@@ -1,6 +1,6 @@
-var Messe_P
+var Messe_P, Bottle_P
 var hdrTexture
-var MesseCollidersLoaderTask
+var MesseCollidersLoaderTask, BottleLoaderTask
 
 function LoadAssets(scene, assetsManager) {
 
@@ -48,6 +48,21 @@ function LoadAssets(scene, assetsManager) {
         console.log(message, exception);
     }
 
+    Bottle_P = new BABYLON.TransformNode("Messe_P");
+    BottleLoaderTask = assetsManager.addMeshTask("", "", "./assets/GlissBottle.glb")
+
+    BottleLoaderTask.onSuccess = function (task) {
+        task.loadedMeshes[0].scaling = new BABYLON.Vector3(0.5, 0.5, 0.5)
+        
+        task.loadedMeshes[0].parent = Bottle_P
+        Bottle_P.rotation.y = Math.PI
+        Bottle_P.position = new BABYLON.Vector3(10,65,10) 
+    }
+
+    BottleLoaderTask.onError = function (task, message, exception) {
+        console.log(message, exception);
+    }
+
 
     //FINISH
 
@@ -69,6 +84,10 @@ function LoadAssets(scene, assetsManager) {
         scene.meshes.forEach(mesh => {
             if (mesh.name == "Height 180"){
                 mesh.setEnabled(false)
+            }
+
+            if(mesh.name == "stehledown"){
+                Bottle_P.parent = mesh
             }
         });
 
