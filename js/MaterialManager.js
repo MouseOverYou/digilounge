@@ -1,3 +1,4 @@
+let woodMat
 function ChangeMaterialProperties() {
 
     var redBay =new BABYLON.Color3.FromHexString("#ea1e1e");
@@ -22,16 +23,12 @@ function ChangeMaterialProperties() {
         //text.wAng = Math.PI/2
     })
 
-
-    var woodMat = new BABYLON.PBRSpecularGlossinessMaterial("woodMat", scene);
+    woodMat = new BABYLON.PBRSpecularGlossinessMaterial("woodMat", scene);
     woodMat.diffuseTexture = woodDiff
     woodMat.normalTexture = woodNRM
     woodMat.environmentTexture = hdrTexture
     woodMat.specularGlossinessTexture = woodRough
     woodMat.glossiness = 0.9;
-
-    scene.getMeshByName("floor").material = woodMat
-
 
     scene.materials.forEach(mat => {
         mat.reflectionTexture = hdrTexture;
@@ -89,10 +86,6 @@ function ChangeMaterialProperties() {
         }
     })  
 
-    sphereL.material = scene.getMaterialByName("Leuchte")
-    sphereR.material = scene.getMaterialByName("Leuchte")
-
-
 
 
     /*
@@ -134,32 +127,6 @@ function CreateCustomMaterials(){
     colMat = new BABYLON.StandardMaterial("colMat", scene)
     colMat.wireframe = false
     colMat.alpha = 0
-
     
 }
 
-function AddGlow(){
-    // Add lights to the scene
-    var gl = new BABYLON.GlowLayer("glow", scene) //glow layer 
-    gl.intensity =0.5;
-    scene.meshes.forEach(elem => {
-        if(elem.name.startsWith("Screen_") || elem.name =="Video_Screens"){
-            gl.addExcludedMesh(elem)
-        }
-    });
-
-}
-
-function AddShadows(){
-    var generator = new BABYLON.ShadowGenerator(4096*4, lightLinks);
-        //generator.useContactHardeningShadow = true;
-        //generator.bias = 0.01;
-        //generator.normalBias= 0.05;
-		//generator.contactHardeningLightSizeUVRatio = 0.08;
-
-        for (var i = 0; i < scene.meshes.length; i++) {
-            generator.addShadowCaster(scene.meshes[i]);    
-            scene.meshes[i].receiveShadows = true;
-        }
-
-}

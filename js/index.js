@@ -5,7 +5,7 @@ var scene = null;
 var sceneToRender = null;
 var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
 
-var lightLinks
+var lightLinks, spotLightL
 
 /******* Add the create scene function ******/
 var createScene = function () {
@@ -15,8 +15,8 @@ var createScene = function () {
 
     var assetsManager = new BABYLON.AssetsManager(scene)
     LoadAssets(scene, assetsManager)
-    camera = new BABYLON.ArcRotateCamera("Camera", 90 * (Math.PI / 180), 82 * (Math.PI / 180), 25, new BABYLON.Vector3(0, 18, 0), scene);
-    camera.minZ = 0.1
+    camera = new BABYLON.ArcRotateCamera("Camera", 90 * (Math.PI / 180), 82 * (Math.PI / 180), 25, new BABYLON.Vector3(0, 18, 2), scene);
+    camera.minZ = 10
     camera.panningDistanceLimit = 0;
     camera.pinchToPanMaxDistance = 0;
     camera.panningSensibility = 0
@@ -30,12 +30,13 @@ var createScene = function () {
     lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, -90), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
     lightLinks.intensity = 0.35
+    lightLinks.shadowMinZ = -13
 
     lightRechts = new BABYLON.DirectionalLight("lightRechts", new BABYLON.Vector3(120, -41, -90), scene);
     lightRechts.position = new BABYLON.Vector3(-1, 1, 0);
     lightRechts.intensity = 0.35
 
-    var spotLightL = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
+    spotLightL = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
     spotLightL.intensity = 8000
 
     var spotLightR = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);

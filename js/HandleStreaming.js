@@ -78,7 +78,7 @@ function AddStreamingToTexture() {
 
 function changeVideoMat(){
     TV.material = videoMat;
-    htmlVideo.volume  = 1;
+    htmlVideo.volume  = 0.01;
 }
 
 let muted = false

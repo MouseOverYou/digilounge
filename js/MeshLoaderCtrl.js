@@ -1,4 +1,4 @@
-var Messe_P, Bottle_P
+var Lounge_P, Bottle_P
 var hdrTexture
 var MesseCollidersLoaderTask, BottleLoaderTask
 
@@ -29,7 +29,7 @@ function LoadAssets(scene, assetsManager) {
     }
 
 
-    Messe_P = new BABYLON.TransformNode("Messe_P");
+    Lounge_P = new BABYLON.TransformNode("Lounge_P");
     MesseLoaderTask = assetsManager.addMeshTask("", "", "./assets/Digital Lounge.glb")
 
     MesseLoaderTask.onSuccess = function (task) {
@@ -37,10 +37,10 @@ function LoadAssets(scene, assetsManager) {
         task.loadedMeshes[0].position.x = 0
         task.loadedMeshes[0].position.y = 0
         task.loadedMeshes[0].position.z = 0
-        task.loadedMeshes[0].parent = Messe_P
-        Messe_P.position.x = 0
-        Messe_P.position.y = 0
-        Messe_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
+        task.loadedMeshes[0].parent = Lounge_P
+        Lounge_P.position.x = 0
+        Lounge_P.position.y = 0
+        Lounge_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
 
     }
 
@@ -48,7 +48,7 @@ function LoadAssets(scene, assetsManager) {
         console.log(message, exception);
     }
 
-    Bottle_P = new BABYLON.TransformNode("Messe_P");
+    Bottle_P = new BABYLON.TransformNode("Lounge_P");
     BottleLoaderTask = assetsManager.addMeshTask("", "", "./assets/GlissBottle.glb")
 
     BottleLoaderTask.onSuccess = function (task) {
@@ -69,22 +69,12 @@ function LoadAssets(scene, assetsManager) {
     var pbr
     assetsManager.onFinish = function (task) {
 
-
         AddGlow()
-        //AddShadows()
+        AddShadows()
         ChangeMaterialProperties()
+        EditMeshes()
         AddStreamingToTexture()
-        scene.meshes.forEach(mesh => {
-            if (mesh.name == "Height 180"){
-                mesh.setEnabled(false)
-            }
-
-            if(mesh.name == "stehledown"){
-                Bottle_P.parent = mesh
-            }
-        });
-
-
+        CatchMeshesToAnimate(BufferStartAnimation)
     }
     //Asset Manager check
     assetsManager.onProgress = function (remainingCount, totalCount, lastFinishedTask) {
