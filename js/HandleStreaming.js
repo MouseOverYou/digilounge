@@ -1,15 +1,16 @@
 let TV, videoMat, htmlVideo, dotsText
+var stream1 = "https://zdfhls18-i.akamaihd.net/hls/live/744751/dach/high/master.m3u8";
 
 function AddStreamingToTexture() {
 
+    //create script to handle hls?
     var url = "https://cdn.jsdelivr.net/npm/hls.js@latest";
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = url;
     document.head.appendChild(s);
 
-
-    var stream1 = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8";
+    //var stream1 = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8";
     var video = $("<video autoplay playsinline src='" + stream1 + "'></video>");
     $("body").append(video);
     console.log("Adding HTML video element");
@@ -41,9 +42,8 @@ function AddStreamingToTexture() {
         videoMat.bumpTexture.vScale =1
         videoMat.emissiveColor = new BABYLON.Color3.FromHexString("#313131")
 
-
         htmlVideo = videoTexture.video;
-        htmlVideo.volume  = 0.01;
+        htmlVideo.volume  = 0.001;
 
         changeVideoMat()
         if (Hls.isSupported()) {
@@ -73,12 +73,11 @@ function AddStreamingToTexture() {
         }
     }
 
-
 }
 
 function changeVideoMat(){
     TV.material = videoMat;
-    htmlVideo.volume  = 0.01;
+    htmlVideo.volume  = 1;
 }
 
 let muted = false
@@ -88,7 +87,7 @@ function MuteVideoStreaming(){
         htmlVideo.volume  = 1
     }
     else{
-        htmlVideo.volume  = 0.01
+        htmlVideo.volume  = 0.001
     }
     muted =! muted;
   

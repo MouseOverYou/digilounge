@@ -12,6 +12,7 @@ function LoadAssets(scene, assetsManager) {
         //alert('HDR LOADED');
         hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("./assets/environment.dds", scene);
         hdrTexture.rotationY = 140 * (Math.PI / 180);
+        hdrTexture.level = 1
 
         // Create Skybox
         var hdrSkybox = BABYLON.Mesh.CreateBox("hdrSkyBox", 1000.0, scene);
@@ -53,10 +54,10 @@ function LoadAssets(scene, assetsManager) {
 
     BottleLoaderTask.onSuccess = function (task) {
         task.loadedMeshes[0].scaling = new BABYLON.Vector3(0.5, 0.5, 0.5)
-        
+
         task.loadedMeshes[0].parent = Bottle_P
         Bottle_P.rotation.y = Math.PI
-        Bottle_P.position = new BABYLON.Vector3(10,65,10) 
+        Bottle_P.position = new BABYLON.Vector3(10, 65, 10)
     }
 
     BottleLoaderTask.onError = function (task, message, exception) {
@@ -75,6 +76,7 @@ function LoadAssets(scene, assetsManager) {
         EditMeshes()
         AddStreamingToTexture()
         CatchMeshesToAnimate(BufferStartAnimation)
+        //PostEffects(scene)
     }
     //Asset Manager check
     assetsManager.onProgress = function (remainingCount, totalCount, lastFinishedTask) {

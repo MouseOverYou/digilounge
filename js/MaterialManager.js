@@ -1,4 +1,4 @@
-let woodMat
+let woodMat, LeuchteMat
 function ChangeMaterialProperties() {
 
     var redBay =new BABYLON.Color3.FromHexString("#ea1e1e");
@@ -6,7 +6,6 @@ function ChangeMaterialProperties() {
     var lightGrayBay = new BABYLON.Color3.FromHexString("#eeeeee");
     var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
     var blackBay = new BABYLON.Color3.FromHexString("#000000");
-
 
     var leatherNRM = new BABYLON.Texture("./assets/textures/Leather026_2K_Normal.jpg", scene, true, false)
     var woodDiff = new BABYLON.Texture("./assets/textures/wood_base.jpg", scene, true, false)
@@ -62,7 +61,8 @@ function ChangeMaterialProperties() {
             mat.roughness = 0;
         }
         else if (mat.name == "Leuchte"){
-            mat.emissiveColor =  new BABYLON.Color3.FromHexString("#75625F")
+            mat.emissiveColor =  new BABYLON.Color3(117/255, 98/255, 95/255)
+            LeuchteMat = mat
         }
         else if (mat.name == "glissBottle"){
             mat.metallic = 0.65

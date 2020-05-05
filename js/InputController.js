@@ -1,90 +1,55 @@
-var iFrameElem = '<iframe width="1120" height="630" src="https://www.youtube.com/embed/9yCWG3lpcvo?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 
+let LightSwitch = false
+let TVSwitch = false
+let showCommands = false
 $(document).keyup(function (e) {
-  //if keypress "p"
+
+  if (e.keyCode === 73) {
+    console.log("i Keyboard")
+    LightSwitch =! LightSwitch
+    console.log(LightSwitch)
+    if (LightSwitch) {
+      TurnLightsOff()
+    }
+    else {
+      UpdateAnimRate = true
+    }
+  }
+
+  if (e.keyCode === 85) {
+    StartAnim.restart()
+  }
+
+  if (e.keyCode === 78) {
+    MuteVideoStreaming()
+
+  }
+
   if (e.keyCode === 80) {
-    e.preventDefault();
-    $('#video-overlay').addClass('open');
-    $("#video-overlay").append(iFrameElem);
-  }
-  //this is a commetn and can be erased)
-});
-
-$('.video-overlay, .video-overlay-close').on('click', function (e) {
-  e.preventDefault();
-  close_video();
-});
-
-function play_video() {
-  $('#video-overlay').addClass('open');
-  $("#video-overlay").append(iFrameElem);
-}
-
-
-function close_video() {
-  $('.video-overlay.open').removeClass('open').find('iframe').remove();
-};
-
-
-$(document).keyup(function (e) {
-  if (e.keyCode === 27) { 
-    //close_video(); 
-  }
-
-  //R PRESSED
-  else if (e.keyCode === 82) {
-    //console.log("r Keyboard")
-    //startTween.restart()
-    //startTween.restart();
-  }
-  else if (e.keyCode == 51){
-    //buttonTween.play();
-  }
-  else if (e.keyCode == 52){
-    //buttonTween.reverse();
-  }
-  //1 PPRESSED -> walkercam
-  else if (e.keyCode == 49) {
-    /*
-    document.getElementById("debugLabel").innerHTML = "Current Camera: First Person";
-    scene.activeCamera = walkerCam
-    HandleViewProperties()
-    //button stuff
-    b_All.setEnabled(true)
-    b_stand.visibility = true;
-    b_press.visibility = true;
-    b_stehle.visibility = true;
-    b_winkel.setEnabled(true);
-    */
-
-  }
-
-  //2 PPRESSED -> rotate camera
-  else if (e.keyCode == 50) {
-    /*
-    if(document.getElementsByClassName('bg-overlay')[0].className == 'bg-overlay open'){
-      console.log("bg is open")
+    console.log("p Keyboard")
+    TVSwitch =! TVSwitch
+    if(TVSwitch){
+      TurnTVOff()
+      htmlVideo.volume  = 0.001;
     }
     else{
-      console.log('bg is close')
-      document.getElementById("debugLabel").innerHTML = "Current Camera: Rotate Camera";
-      scene.activeCamera = camera;
-      HandleViewProperties()
-      //button stuff
-  
-      b_All.setEnabled(false)
-      b_stand.visibility = false;
-      b_press.visibility = false;
-      b_stehle.visibility = false;
-      b_winkel.setEnabled(false);
-    }*/
+      TurnTVOn()
+    }
 
   }
 
-  // SPACE PRESSED -> 
-  else if (e.keyCode == 32) {
-    console.log("jump")
+  if(e.keyCode === 74){
+    showCommands =! showCommands
+    if(showCommands){
+      $('#debugLabel').css('z-index', 0)
+    }
+    else{
+      $('#debugLabel').css('z-index', -1)
+    }
+
+
   }
+
 
 });
 
@@ -113,7 +78,7 @@ $(document).keyup(function (e) {
   //if keypress "i"
 
   if (e.keyCode === 73) {
-    AddStreamingToTexture();
+    //AddStreamingToTexture();
   }
   if (e.keyCode === 79) {
     MuteVideoStreaming();

@@ -5,7 +5,7 @@ var scene = null;
 var sceneToRender = null;
 var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
 
-var lightLinks, spotLightL
+var lightLinks, lightRechts, spotLightL, spotLightR
 
 /******* Add the create scene function ******/
 var createScene = function () {
@@ -39,7 +39,7 @@ var createScene = function () {
     spotLightL = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
     spotLightL.intensity = 8000
 
-    var spotLightR = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
+    spotLightR = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-35, 30, -48), new BABYLON.Vector3(0, -1, 0.3), 95 * (Math.PI / 180), 2, scene);
     spotLightR.intensity = 8000
 
     sphereL = BABYLON.MeshBuilder.CreateSphere("sphereL", { diameter: 3 }, scene);
@@ -49,20 +49,9 @@ var createScene = function () {
     sphereR = BABYLON.MeshBuilder.CreateSphere("sphereR", { diameter: 3 }, scene);
     sphereR.parent = spotLightR
     sphereR.visibility = 0.2
-
-
-    // Sky material
-    var skyboxMaterial = new BABYLON.SkyMaterial("skyMaterial", scene);
-    skyboxMaterial.backFaceCulling = false;
-    skyboxMaterial.cameraOffset.y = 50;
-    skyboxMaterial.luminance = 0.05;
-    //skyboxMaterial._cachedDefines.FOG = true;
-
-    // Sky mesh (box)
-    var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
-    skybox.material = skyboxMaterial;
-
-    //PostEffects(scene)
+    
+    scene.clearColor = new BABYLON.Color3(0,0,0);
+    scene.ambientColor = new BABYLON.Color3(0,0,0);
 
     scene.onPointerUp = function () {
 
@@ -78,9 +67,16 @@ if (!engine) throw 'engine should not be null.';
 scene = createScene();;
 sceneToRender = scene
 
+let UpdateAnimRate = false
+let AnimRate = 0
 engine.runRenderLoop(function () {
     if (sceneToRender) {
         sceneToRender.render();
+    }
+    if(UpdateAnimRate){
+        AnimRate += 0.01
+        TurnLightsOn(AnimRate)
+        //console.log(AnimRate)
     }
 });
 
@@ -94,4 +90,6 @@ window.addEventListener("resize", function () {
 /*
 TO DO:
 Mute video streaming: cvurrent fake mute
+EXplision reveal pack
+change urls
 */

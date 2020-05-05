@@ -33,7 +33,7 @@ function AddGlow() {
 }
 
 function AddShadows() {
-    var groundShadow = BABYLON.Mesh.CreatePlane('groundShadow', 1000, scene)
+    var groundShadow = BABYLON.Mesh.CreatePlane('groundShadow', 95, scene)
     groundShadow.rotation.x = Math.PI / 2
     groundShadow.material = new BABYLON.ShadowOnlyMaterial('shadowOnly', scene)
     groundShadow.material.alpha = 0.1
