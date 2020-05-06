@@ -114,15 +114,9 @@ function ChangeMaterialProperties() {
 
 var colMat
 function CreateCustomMaterials(){
-
-
     colMat = new BABYLON.StandardMaterial("colMat", scene)
     colMat.wireframe = false
     colMat.alpha = 0
-
-    
-
-    
 }
 
 function createVideoMat(){
@@ -139,6 +133,7 @@ function createVideoMat(){
     videoMat.emissiveColor = new BABYLON.Color3.FromHexString("#313131")
     videoMat.metallic = 0
     videoMat.roughness = 0
+    
     return videoMat;
 }
 

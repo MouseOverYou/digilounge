@@ -1,7 +1,5 @@
-let TV, htmlVideo, dotsText
+let TV, htmlVideo
 var stream1 = "https://live2weltcms-lh.akamaihd.net/i/Live2WeltCMS_1@444563/index_1_av-b.m3u8"
-//var stream1 = "https://zdfhls18-i.akamaihd.net/hls/live/744751/dach/high/master.m3u8";
-//var stream1 = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8";
 
 var hlsArray = []
 var vidMats = []
@@ -32,11 +30,11 @@ function AddStreamingToTexture() {
         htmlVideo = videoTexture.video;
         htmlVideo.volume = 1;
 
-        
+
         TV.material.albedoTexture = videoTexture;
         TV.material.emissiveTexture = videoTexture;
         TV.material.reflectionTexture = hdrTexture
-        
+
 
         if (Hls.isSupported()) {
             var hls = new Hls();
@@ -56,7 +54,7 @@ function AddStreamingToTexture() {
         }
     }
 }
-function myScript(){
+function myScript() {
     console.log("ican play")
 }
 
@@ -85,17 +83,19 @@ function CreateStreamingVideoElement(newStream) {
             hlsArray.shift()
             document.querySelectorAll('video')[0].remove();
             AddNewStreamingToMaterial(video2, RemoveOldVideoMat)
-            
+
         });
- 
+
     } else if (video2.canPlayType('application/vnd.apple.mpegurl')) {
         video2.src = newStream;
         engine.hideLoadingUI();
+
         video2.addEventListener('loadedmetadata', function () {
             hlsArray[0].destroy()
             hlsArray.shift()
             document.querySelectorAll('video')[0].remove();
             AddNewStreamingToMaterial(video2, RemoveOldVideoMat)
+
         });
     }
 }
@@ -118,11 +118,11 @@ function AddNewStreamingToMaterial(video2, callback) {
 
 }
 
-function RemoveOldVideoMat(){
+function RemoveOldVideoMat() {
     //dont remove the reflection texture
     videoMats[0].reflectionTexture = ""
     //this removes the material and all textures
-    videoMats[0].dispose(false,true)
+    videoMats[0].dispose(false, true)
     videoMats.shift()
 }
 
@@ -139,16 +139,16 @@ function MuteVideoStreaming() {
 
 }
 
-function ChangeChannel(chan){
+function ChangeChannel(chan) {
     console.log(chan)
     console.log(document.getElementById("streamingDiv"))
     document.getElementById("streamingDiv").style.zIndex = "-1"
-    switch(chan){
+    switch (chan) {
         case "E Entertainment":
             var link = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8"
             CreateStreamingVideoElement(link)
             break;
-            
+
         case "Arte":
             var link = "https://artelive-lh.akamaihd.net/i/artelive_de@393591/master.m3u8"
             CreateStreamingVideoElement(link)
@@ -166,6 +166,10 @@ function ChangeChannel(chan){
 
         case "Deluxe Music":
             var link = "https://1000338copo-app2749759488.r53.cdn.tv1.eu/1000518lf/1000338copo/live/app2749759488/w2928771075/live247.smil/playlist.m3u8"
+            CreateStreamingVideoElement(link);
+            break;
+        case "TV Peru":
+            var link = "http://cdnh4.iblups.com/hls/irtp.m3u8"
             CreateStreamingVideoElement(link);
             break;
         default:
