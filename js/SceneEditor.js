@@ -15,6 +15,11 @@ function EditMeshes() {
         else if (mesh.name == "floor") {
             mesh.material = woodMat
         }
+        else if(mesh.name == "screen Plane"){
+            TV = mesh
+            //TV.actionManager = new BABYLON.ActionManager(scene);
+        }
+        
     });
     sphereL.material = scene.getMaterialByName("Leuchte")
     sphereR.material = scene.getMaterialByName("Leuchte")

@@ -1,4 +1,5 @@
 let woodMat, LeuchteMat
+let videoMats = []
 function ChangeMaterialProperties() {
 
     var redBay =new BABYLON.Color3.FromHexString("#ea1e1e");
@@ -113,20 +114,31 @@ function ChangeMaterialProperties() {
 
 var colMat
 function CreateCustomMaterials(){
-    //Infoboxes materials
-    iMat = new BABYLON.StandardMaterial("iBoxMat", scene);
-    iMat.disableLighting = true;
 
-    iMatText = new BABYLON.Texture("./assets/Infobox.png", scene, true, true);
-    iMatTextVideo = new BABYLON.Texture("./assets/Infobox_Video.png", scene, true, true);
-    iMatText.uScale = -1;
-    iMatTextVideo.uScale = -1;
-    iMat.emissiveTexture = iMatTextVideo;
-    iMat.opacityTexture = iMatTextVideo;
 
     colMat = new BABYLON.StandardMaterial("colMat", scene)
     colMat.wireframe = false
     colMat.alpha = 0
+
     
+
+    
+}
+
+function createVideoMat(){
+    
+    var videoMat = new BABYLON.PBRMaterial("videoMat", scene);
+    videoMats.push(videoMat)
+    var dotsText = new BABYLON.Texture("./assets/videoDots2.jpg", scene, true, false)
+    var ambientScreen = new BABYLON.Texture("./assets/screenAmbient.jpg", scene, true, false)
+    videoMat.ambientTexture = ambientScreen
+    videoMat.bumpTexture = dotsText
+    videoMat.bumpTexture.level = 0
+    videoMat.bumpTexture.uScale =1
+    videoMat.bumpTexture.vScale =1
+    videoMat.emissiveColor = new BABYLON.Color3.FromHexString("#313131")
+    videoMat.metallic = 0
+    videoMat.roughness = 0
+    return videoMat;
 }
 

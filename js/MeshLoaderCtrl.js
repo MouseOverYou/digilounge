@@ -72,6 +72,7 @@ function LoadAssets(scene, assetsManager) {
 
         AddGlow()
         AddShadows()
+        CreateCustomMaterials()
         ChangeMaterialProperties()
         EditMeshes()
         AddStreamingToTexture()
