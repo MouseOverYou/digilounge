@@ -51,13 +51,15 @@ function TurnLightsOn(rate) {
 
 
 function TurnTVOn(){
-    videoMat.emissiveColor = new BABYLON.Color3(49 / 255 , 49 / 255 , 49 / 255 )
-    videoMat.albedoColor = new BABYLON.Color3(1, 1, 1)
+    videoMats[0].emissiveColor = new BABYLON.Color3(49 / 255 , 49 / 255 , 49 / 255 )
+    videoMats[0].albedoColor = new BABYLON.Color3(1, 1, 1)
+    htmlVideo.volume = 1
 }
 
 function TurnTVOff(){
-    videoMat.emissiveColor = new BABYLON.Color3(0, 0, 0)
-    videoMat.albedoColor = new BABYLON.Color3(0, 0, 0)
+    videoMats[0].emissiveColor = new BABYLON.Color3(0, 0, 0)
+    videoMats[0].albedoColor = new BABYLON.Color3(0, 0, 0)
+    htmlVideo.volume  = 0.001;
 
 }
 function CatchMeshesToAnimate(callback) {

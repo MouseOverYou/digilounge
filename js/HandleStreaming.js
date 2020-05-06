@@ -1,5 +1,5 @@
 let TV, htmlVideo, dotsText
-var stream1 = "https://tagesschau-lh.akamaihd.net/i/tagesschau_3@66339/master.m3u8";
+var stream1 = "https://zdfhls18-i.akamaihd.net/hls/live/744751/dach/high/master.m3u8";
 //var stream1 = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8";
 
 var hlsArray = []
@@ -19,6 +19,7 @@ function AddStreamingToTexture() {
     var video = $("<video autoplay playsinline src='" + stream1 + "'></video>");
     $("body").append(video);
     console.log("Adding HTML video element");
+    TV.material = createVideoMat();
 
     //HLS is loaded
     s.onload = function () {
@@ -30,7 +31,7 @@ function AddStreamingToTexture() {
         htmlVideo = videoTexture.video;
         htmlVideo.volume = 1;
 
-        TV.material = createVideoMat();
+        
         TV.material.albedoTexture = videoTexture;
         TV.material.emissiveTexture = videoTexture;
         TV.material.reflectionTexture = hdrTexture
@@ -90,6 +91,9 @@ function CreateStreamingVideoElement(newStream) {
         video2.src = newStream;
         engine.hideLoadingUI();
         video2.addEventListener('loadedmetadata', function () {
+            hlsArray[0].destroy()
+            hlsArray.shift()
+            document.querySelectorAll('video')[0].remove();
             AddNewStreamingToMaterial(video2, RemoveOldVideoMat)
         });
     }
@@ -118,6 +122,7 @@ function RemoveOldVideoMat(){
     videoMats[0].reflectionTexture = ""
     //this removes the material and all textures
     videoMats[0].dispose(false,true)
+    videoMats.shift()
 }
 
 let muted = false

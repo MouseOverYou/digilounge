@@ -30,7 +30,7 @@ $(document).keyup(function (e) {
     TVSwitch =! TVSwitch
     if(TVSwitch){
       TurnTVOff()
-      htmlVideo.volume  = 0.001;
+      
     }
     else{
       TurnTVOn()
