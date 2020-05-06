@@ -49,7 +49,15 @@ $(document).keyup(function (e) {
 
 
   }
-
+  if(e.keyCode === 72){
+    var state = document.getElementById("streamingDiv").style.zIndex
+    if(state == "0"){
+      document.getElementById("streamingDiv").style.zIndex ="-1"
+    }
+    else{
+      document.getElementById("streamingDiv").style.zIndex = "0"
+    }
+  }
 
 });
 

@@ -21,6 +21,27 @@ body {
   background: blanchedalmond
 }
 
+#streamingDiv{
+  position: absolute;
+  top: 50px;
+  width: 600px;
+  z-index: -1;
+  background: black;
+}
+
+#inputStreamingField{
+  margin:12px 15px;
+  width: 450px
+}
+
+#inputButton{
+  background-color: #063c9d;
+  color:#ffffff;
+  width: 100px;
+  font-weight: bold
+}
+
+
 .back-zoom {
   position: absolute;
   z-index: 1000;
@@ -40,132 +61,13 @@ body {
 .back-zoom.open {
   opacity: 1;
 }
-/* CHATBOT TEST*/
-.output{
-  background-color: #d85757;
-  position: relative;
-  margin:10px 35px;
-  width:70%;
-  height: 7%;
-	border-radius: 10px;
-  color:#fff;
-
-}
-
-  #container {
-  margin: 35px 35px 25px 35px;
-  background-color: #f0db4f;
-  justify-content: center;
-  margin-top: 0px;
-}
-
-.chat-text{
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff; 
-  position: absolute;
-  margin-top: 0px;
-  left: 0px;
-  top: 4px;
-	/*margin:5px 10px 0;*/
-}
-
-.input-elem {
-  background-color: #0c83e2;
-  position: relative;
-  margin:10px 95px;
-  width:70%;
-  height: 7%;
-	border-radius: 10px;
-  color:#fff;
-}
-
-#typing-elem {
-  position: absolute;
-  background-color: #323334;
-  left: 3%;
-  top: 85%;
-  width:34%;
-  height: 7%;
-	border-radius: 10px;
-  color:#fff;
-}
-input{
-  background-color: #0c82e200;
-  margin:12px 15px;
-  color:#ffffff;
-}
 
 ::placeholder {
-  color: #eeeeee;
-  opacity: 1; /* Firefox */
-}
-/*INFOBOXEN TEST*/
-.infobox {
-  position: fixed;
-  z-index: 2;
-  left: -65%;
-  top: 25%;
-  max-height: 1px;
-  color: #fff;
-  opacity:1;
-  -webkit-transition: all 500ms;
-  transition: all 500ms;
+  color: #878a8d;
+  font-style:italic;
+  opacity: 1 /* Firefox */
 }
 
-.videobox {
-  position: fixed;
-  z-index: 2;
-  right: -5%;
-  top:25%;
-  max-height: 1px;
-  color: #fff;
-  opacity:1;
-  cursor: pointer;
-  -webkit-transition: all 500ms;
-  transition: all 500ms;
-}
-
-.infobox.open{
-  left: 30%;
-}
-.infobox.close{
-  left: -65%;
-}
-
-.videobox.open{
-  right: 0%;
-}
-
-.videobox.close{
-right: -65%;
-}
-
-.info-overlay {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  -webkit-transition: all ease 500ms;
-  transition: all ease 500ms;
-}
-
-.info-overlay.open {
-  z-index: 1;
-  opacity: 1;
-}
-
-.info-overlay.close {
-  z-index: -1;
-  opacity: 0;
-}
-/*INFOBOXEN TEST*/
 
 /*BABYLON CSS*/
 #renderCanvas {

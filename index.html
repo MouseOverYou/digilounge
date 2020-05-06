@@ -26,7 +26,21 @@
 
 <body>
     <div id="fpsLabel"></div>
-    <div id="debugLabel">Keyboard Commands: u=pack, i=light, o=mute, p=TV</div>
+    <div id="debugLabel">Keyboard Commands: h=channel, u=pack, i=light, o=mute, p=TV</div>
+
+    <div id="streamingDiv">
+        <form action='javascript: ChangeChannel(document.getElementsByName("channel")[0].value);' method="get">
+            <input id="inputStreamingField" list="channels" name="channel" placeholder="choose one channel or paste a .m3u8 link ...">
+            <datalist id="channels">
+              <option value="E Entertainment">
+              <option value="Arte">
+              <option value="Tagesschau24">
+              <option value="Nickelodeon">
+              <option value="Deluxe Music">
+            </datalist>
+            <input type="submit" value="Stream" id="inputButton">
+          </form>
+    </div>
 
     <div id="video-overlay" class="video-overlay">
         <a class="video-overlay-close">&times;</a>

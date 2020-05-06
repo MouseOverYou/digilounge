@@ -1,5 +1,6 @@
 let TV, htmlVideo, dotsText
-var stream1 = "https://zdfhls18-i.akamaihd.net/hls/live/744751/dach/high/master.m3u8";
+var stream1 = "https://live2weltcms-lh.akamaihd.net/i/Live2WeltCMS_1@444563/index_1_av-b.m3u8"
+//var stream1 = "https://zdfhls18-i.akamaihd.net/hls/live/744751/dach/high/master.m3u8";
 //var stream1 = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8";
 
 var hlsArray = []
@@ -112,7 +113,7 @@ function AddNewStreamingToMaterial(video2, callback) {
     htmlVideo.play();
     htmlVideo.volume = 1;
 
-    //remove
+    //RemoveOldVideoMat
     callback()
 
 }
@@ -132,12 +133,47 @@ function MuteVideoStreaming() {
         htmlVideo.volume = 1
     }
     else {
-        htmlVideo.volume = 0.001
+        htmlVideo.volume = 0.0
     }
     muted = !muted;
 
 }
 
+function ChangeChannel(chan){
+    console.log(chan)
+    console.log(document.getElementById("streamingDiv"))
+    document.getElementById("streamingDiv").style.zIndex = "-1"
+    switch(chan){
+        case "E Entertainment":
+            var link = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8"
+            CreateStreamingVideoElement(link)
+            break;
+            
+        case "Arte":
+            var link = "https://artelive-lh.akamaihd.net/i/artelive_de@393591/master.m3u8"
+            CreateStreamingVideoElement(link)
+            break;
+
+        case "Tagesschau24":
+            var link = "https://tagesschau-lh.akamaihd.net/i/tagesschau_3@66339/master.m3u8"
+            CreateStreamingVideoElement(link)
+            break;
+
+        case "Nickelodeon":
+            var link = "http://unilivemtveu-lh.akamaihd.net/i/nickde_1@448749/master.m3u8"
+            CreateStreamingVideoElement(link);
+            break;
+
+        case "Deluxe Music":
+            var link = "https://1000338copo-app2749759488.r53.cdn.tv1.eu/1000518lf/1000338copo/live/app2749759488/w2928771075/live247.smil/playlist.m3u8"
+            CreateStreamingVideoElement(link);
+            break;
+        default:
+            CreateStreamingVideoElement(chan)
+
+    }
+
+}
 
 
 //working hls streaming
