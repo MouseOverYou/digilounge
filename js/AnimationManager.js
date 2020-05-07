@@ -7,10 +7,10 @@ function BufferStartAnimation() {
     let IntRate = new BABYLON.Vector3(0, 0, 0)
     Pack.rotationQuaternion = null
     StartAnim.set(Pack.scaling, { x: 0, y: 0, z: 0 })
-    StartAnim.set(StehleL.scaling, {y:0.01})
-    StartAnim.to(StehleL.scaling, { y: 1, duration: 0.5 })
+    StartAnim.fromTo(StehleL.scaling, {y:0.01}, { y: 1, duration: 0.5 })
     StartAnim.fromTo(Pack.scaling, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, ease: "back.out(2)", duration: 0.5 }, ">0.1")
     StartAnim.from(Pack.rotation, { y: -90 * (Math.PI / 180), duration: 0.5, ease: "back.out(4)" }, "<")
+    StartAnim.pause();
     //TurnLightsOff()
 }
 

@@ -1,4 +1,24 @@
+function StartScene(oncompleteAnimate){
+    AddGlow()
+    AddShadows()
+    CreateCustomMaterials()
+    ChangeMaterialProperties()
+    EditMeshes()
+    AddStreamingToTexture()
+    CatchMeshesToAnimate(BufferStartAnimation)
+    //PostEffects(scene)
+    //animaiton sequencer
+    oncompleteAnimate()
+
+}
+
 let firsStehle = true
+function StartAnimating(){
+    TurnLightsOff()
+    //turn lights on
+    window.setTimeout(()=>{UpdateAnimRate = true},1000)
+    window.setTimeout(()=>{StartAnim.restart()},1000)
+}
 function EditMeshes() {
     scene.meshes.forEach(mesh => {
         if (mesh.name == "Height 180") {

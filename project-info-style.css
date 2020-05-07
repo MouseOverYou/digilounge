@@ -25,6 +25,10 @@ body {
     margin: 0;
     padding: 0;
 }
+img{
+    position: relative;
+    top: 20vh;
+}
 
 
 .project-overlay{
@@ -144,10 +148,10 @@ h2{
 p{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 40px;
     line-height: 25px;
     color: #6b6b6b; 
-    margin: 0 35px 35px 35px;
+    margin: 20vh 35px 35px 35px;
 }
 
 

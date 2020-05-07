@@ -69,15 +69,8 @@ function LoadAssets(scene, assetsManager) {
 
     var pbr
     assetsManager.onFinish = function (task) {
+        StartScene(StartAnimating);
 
-        AddGlow()
-        AddShadows()
-        CreateCustomMaterials()
-        ChangeMaterialProperties()
-        EditMeshes()
-        AddStreamingToTexture()
-        CatchMeshesToAnimate(BufferStartAnimation)
-        //PostEffects(scene)
     }
     //Asset Manager check
     assetsManager.onProgress = function (remainingCount, totalCount, lastFinishedTask) {
