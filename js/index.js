@@ -53,6 +53,8 @@ var createScene = function () {
     scene.clearColor = new BABYLON.Color3(0,0,0);
     scene.ambientColor = new BABYLON.Color3(0,0,0);
 
+    var vrHelper = scene.createDefaultVRExperience({createDeviceOrientationCamera:false});
+    
     scene.onPointerUp = function () {
 
         htmlVideo.play()

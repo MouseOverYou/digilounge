@@ -169,7 +169,7 @@ function ChangeChannel(chan) {
             CreateStreamingVideoElement(link);
             break;
         case "TV Peru":
-            var link = "http://cdnh4.iblups.com/hls/irtp.m3u8"
+            var link = "http://cdnh4.iblups.com/hls/RMuwrdk7M9.m3u8"
             CreateStreamingVideoElement(link);
             break;
         default:
