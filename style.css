@@ -7,6 +7,16 @@ body {
     padding: 0;
 }
 
+.logo{
+  position: absolute;
+  top: 92vh;
+  left: 5vh;
+  z-index: 998;
+  max-width: 200px;
+  height: auto;
+  pointer-events: none
+}
+
 #fpsLabel {
   position: absolute;
   top: 25px;

@@ -210,6 +210,16 @@ p{
         left: 5.5%;
         width: 70%;
     }
+
+    .logo{
+        position: absolute;
+        top: 96vh;
+        left: 2vh;
+        z-index: 998;
+        max-width: 200px;
+        height: auto;
+        pointer-events: none
+      }
 }
 
 
@@ -221,5 +231,17 @@ p{
     top: 7.5%;
     left: 7.5%;
     }
+
+    .logo{
+        position: absolute;
+        top: 92vh;
+        left: 5vh;
+        z-index: 998;
+        max-width: 200px;
+        height: auto;
+        pointer-events: none
+      }
+
+
      
 }
