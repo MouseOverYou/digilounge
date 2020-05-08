@@ -15,17 +15,21 @@ var createScene = function () {
 
     var assetsManager = new BABYLON.AssetsManager(scene)
     LoadAssets(scene, assetsManager)
-    camera = new BABYLON.ArcRotateCamera("Camera", 90 * (Math.PI / 180), 82 * (Math.PI / 180), 6, new BABYLON.Vector3(0, 18, 2), scene);
-    camera.minZ = 10
+    camera = new BABYLON.ArcRotateCamera("Camera", 90 * (Math.PI / 180), 82 * (Math.PI / 180), 30, new BABYLON.Vector3(0, 18, -15), scene);
+    camera.minZ = 1
     camera.panningDistanceLimit = 0;
     camera.pinchToPanMaxDistance = 0;
     camera.panningSensibility = 0
     camera.lowerRadiusLimit = 0.0001
-    camera.upperRadiusLimit = 100
+    camera.upperRadiusLimit = 30
     camera.angularSensibilityX = 3000
     camera.angularSensibilityy = 3000
     camera.wheelPrecision = 10
     camera.attachControl(canvas, true, true, false);
+
+    camMitte = BABYLON.MeshBuilder.CreateSphere("camMitte", { diameter: 3 }, scene);
+    camMitte.position.z = -10
+    camMitte.visibility = 0
 
     lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, -90), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
