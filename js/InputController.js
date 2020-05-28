@@ -3,30 +3,7 @@ let TVSwitch = false
 let showCommands = false
 $(document).keyup(function (e) {
 
-  if (e.keyCode === 73) {
-    console.log("i Keyboard")
-    LightSwitch = !LightSwitch
-    console.log(LightSwitch)
-    if (LightSwitch) {
-      TurnLightsOff()
-    }
-    else {
-      UpdateAnimRate = true
-    }
-  }
-
-
-  if (e.keyCode === 78) {
-    MuteVideoStreaming()
-
-  }
-
-  if (e.keyCode === 80) {
-    console.log("p Keyboard")
-
-
-  }
-
+  
   if (e.keyCode === 74) {
     showCommands = !showCommands
     if (showCommands) {
