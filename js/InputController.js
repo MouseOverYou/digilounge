@@ -50,9 +50,10 @@ $(document).keyup(function (e) {
 
   }
   if(e.keyCode === 72){
+    console.log("h typed")
     var state = document.getElementById("streamingDiv").style.zIndex
     if(state == "0"){
-      document.getElementById("streamingDiv").style.zIndex ="-1"
+      document.getElementById("streamingDiv").style.zIndex ="5"
     }
     else{
       document.getElementById("streamingDiv").style.zIndex = "0"
@@ -93,20 +94,7 @@ $(document).keyup(function (e) {
   }
 });
 
-function show_Info_Overlay() {
-  $('.info-overlay').addClass('open')
-  $('.info-overlay').removeClass('close')
-  $('.infobox').addClass('open')
-  $('.infobox').removeClass('close')
-  $('.videobox').addClass('open')
-  $('.videobox').removeClass('close')
-}
-
-function hide_Info_Overlay() {
-  $('.info-overlay').addClass('close')
-  $('.info-overlay').removeClass('open')
-  $('.infobox').addClass('close')
-  $('.infobox').removeClass('open')
-  $('.videobox').addClass('close')
-  $('.videobox').removeClass('open')
-}
+document.addEventListener('click', function(e) {
+  e = e || window.event;
+  console.log(e.target);
+}, false);

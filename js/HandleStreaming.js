@@ -15,7 +15,7 @@ function AddStreamingToTexture() {
 
     //crea video element to host streaming channel
     //var stream1 = "https://etlive-mediapackage-fastly.cbsaavideo.com/dvr/manifest.m3u8";
-    var video = $("<video autoplay playsinline src='" + stream1 + "'></video>");
+    var video = $("<video style='pointer-events: none' autoplay playsinline src='" + stream1 + "'></video>");
     $("body").append(video);
     console.log("Adding HTML video element");
     TV.material = createVideoMat();

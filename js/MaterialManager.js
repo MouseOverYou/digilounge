@@ -1,4 +1,5 @@
-let woodMat, LeuchteMat
+let woodMat, LeuchteMat, BoardMat
+let boardPH
 let videoMats = []
 function ChangeMaterialProperties() {
 
@@ -8,6 +9,7 @@ function ChangeMaterialProperties() {
     var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
     var blackBay = new BABYLON.Color3.FromHexString("#000000");
 
+    boardPH = new BABYLON.Texture("./assets/textures/boardPH.jpg", scene, true, false)
     var leatherNRM = new BABYLON.Texture("./assets/textures/Leather026_2K_Normal.jpg", scene, true, false)
     var woodDiff = new BABYLON.Texture("./assets/textures/wood_base.jpg", scene, true, false)
     var woodNRM = new BABYLON.Texture("./assets/textures/wood_normal.jpg", scene, true, false)
@@ -85,29 +87,20 @@ function ChangeMaterialProperties() {
             mat.emissiveTexture = mat.albedoTexture
             mat.emissiveColor = new BABYLON.Color3.FromHexString("#313131")
         }
+        else if(mat.name == "Board Metal"){
+            mat.roughness = 0.5
+            mat.metallic = 0.65
+            mat.albedoColor = lightGrayBay
+        }
+        else if(mat.name == "BoardMat"){
+            BoardMat = mat
+            mat.metallic = 0.3
+            mat.roughness = 0.3
+            mat.albedoColor = new BABYLON.Color3.FromHexString("#ffffff")
+
+        }
     })  
 
-
-
-    /*
-        scene.meshes.forEach(mesh =>{
-        if(mesh.name.startsWith("_hole.1 4")){
-            var spotHole = new BABYLON.SpotLight("spotHole", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(0, -1, 0), 95 * (Math.PI / 180), 2, scene);
-            spotHole.position = mesh.position
-            spotHole.intensity = 35000
-            
-        }
-    })
-    var screenTex = new BABYLON.Texture("./assets/ascree.jpg", scene, true, false)
-    var perlinText = new BABYLON.NoiseProceduralTexture("perlin", 254, scene);
-
-    iconGlassOff = new BABYLON.PBRMaterial("iconGlassOff", scene)
-    iconGlassOff.albedoColor = redBay;
-    iconGlassOff.metallic = 0
-    iconGlassOff. roughness = 0.5
-    iconGlassOff.transparencyMode = 2
-    iconGlassOff.alpha = 0.85
-    */
 
     
 }
@@ -115,7 +108,7 @@ function ChangeMaterialProperties() {
 var colMat
 function CreateCustomMaterials(){
     colMat = new BABYLON.StandardMaterial("colMat", scene)
-    colMat.wireframe = false
+    colMat.wireframe = true
     colMat.alpha = 0
 }
 

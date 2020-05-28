@@ -62,7 +62,27 @@ var createScene = function () {
     scene.onPointerUp = function () {
 
         htmlVideo.play()
-}
+    }
+
+    var showUI = false
+    scene.onPointerDown = function () {
+
+        var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (mesh.name == "BoardColl" && mesh.isPickable); });
+        if (pickInfo && pickInfo.pickedMesh) {
+            showUI = !showUI
+            //alert(pickInfo.pickedMesh.name);
+            CurrentSelection = pickInfo.pickedMesh.name.split('Board')[1];
+            //alert(CurrentSelection)
+
+            if (showUI) {
+                handleWhiteBoard(true)
+            }
+            else {
+                handleWhiteBoard(false)
+            }
+
+        }
+    }
 
     return scene;
 };

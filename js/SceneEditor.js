@@ -19,6 +19,7 @@ function StartAnimating(){
     window.setTimeout(()=>{UpdateAnimRate = true},1000)
     window.setTimeout(()=>{StartAnim.restart()},1000)
 }
+var  BoardColl
 function EditMeshes() {
     scene.meshes.forEach(mesh => {
         if (mesh.name == "Height 180") {
@@ -38,6 +39,17 @@ function EditMeshes() {
         else if(mesh.name == "screen Plane"){
             TV = mesh
             //TV.actionManager = new BABYLON.ActionManager(scene);
+        }
+        else if(mesh.name == "Board"){
+
+            BoardColl = new BABYLON.MeshBuilder.CreateBox("BoardColl", { height: 12, width:18, depth: 0.1 }, scene)
+
+            BoardColl.material = colMat;
+            BoardColl.setParent(mesh);
+            BoardColl.position = new BABYLON.Vector3(0,0,0);
+            BoardColl.isPickable = true;
+            AllowMouseOverMesh(mesh)
+
         }
         
     });
@@ -81,4 +93,19 @@ function AddShadows() {
 
     }
 
+}
+
+function AllowMouseOverMesh(mesh){
+    mesh.actionManager = new BABYLON.ActionManager(scene);
+	
+	//ON MOUSE ENTER
+	mesh.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){	
+        //mesh.material.emissiveColor = BABYLON.Color3.Blue();
+        BoardMat.albedoTexture = boardPH
+	}));
+	
+	//ON MOUSE EXIT
+	mesh.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
+        BoardMat.albedoTexture = ""
+	}));
 }

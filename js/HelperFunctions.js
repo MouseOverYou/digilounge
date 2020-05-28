@@ -10,7 +10,7 @@ function handleDebugLayer() {
     if (scene.debugLayer.isVisible()) {
         scene.debugLayer.hide()
       } else {
-        scene.debugLayer.show()
+        scene.debugLayer.show();
       }
 }
 
