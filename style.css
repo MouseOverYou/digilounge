@@ -34,6 +34,7 @@ body {
 #streamingDiv{
   position: absolute;
   top: 50px;
+  right: 0px;
   width: 600px;
   z-index: 0;
   background: black;
@@ -95,76 +96,94 @@ body {
     color: #999;
     cursor: default;
 }
-
-/* X ICON */
-.x-icon {
+/*UI STUFF*/
+/*Colour Picker*/
+#UIHolder {
   position: absolute;
-  z-index: -1;
-  top: 15px;
-  right: 20px;
-  font-size: 36px;
-  line-height: 1;
-  font-weight: 400;
-  color: #fff;
-  opacity: 0;
-  text-decoration: none;
-  cursor: pointer;
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
+  z-index:2
 }
 
-.x-icon.open {
-  position: fixed;
-  z-index: 3;
-  opacity: 1;
-}
-/*VIDEO controller CSS*/
-.video-overlay {
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    opacity: 0;
-    -webkit-transition: all ease 500ms;
-    transition: all ease 500ms;
+/*Env Picker*/
+#envPicker {
+	margin-left:auto;
+	margin-right:auto;
+	width: 10vh;
+	  border-style: solid;
+	  border-width: 0.4vh;
+	  border-color: #2C3E50;
+	background-color:rgba(44, 62, 80, 0);
   }
-  
-  .video-overlay.open {
-    position: fixed;
-    z-index: 1000;
-    opacity: 1;
+  #envPicker div {
+	  display: block;
+		cursor:pointer;
+	  -webkit-transition: .25s ease;
+	  -moz-transition: .25s ease;
+	  -ms-transition: .25s ease;
+	  -o-transition: .25s ease;
+	  transition:  .25s ease;
   }
-  
-  .video-overlay-close {
-    position: absolute;
-    z-index: 1000;
-    top: 15px;
-    right: 20px;
-    font-size: 36px;
-    line-height: 1;
-    font-weight: 400;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-    -webkit-transition: all 200ms;
-    transition: all 200ms;
+  .envOption{
+		margin: 2vh;
+		width: 5vh;
+		height: 5vh;
+  }
+  #channel {
+	  background-color: #063c9d;
+  }
+  #pack {
+	  background-color: rgb(255, 50, 228);
   }
 
-  
-  .video-overlay-close:hover, .x-icon:hover, .back-zoom:hover{
-    color: #fa183d;
+  .selectedEnv {
+	margin: 0.6vh;
+	width: 8vh;
+	height: 8vh;
   }
+
+  /*Light Picker*/
+#lightPicker {
+	margin-left:auto;
+  margin-right:auto;
   
-  .video-overlay iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-    /* width: 90%; */
-    /* height: auto; */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+	  width: 10vh;
+	  border-style: solid;
+	  border-width: 0.4vh;
+	  border-color: #2C3E50;
+	background-color:rgba(44, 62, 80, 0);
+  }
+  #lightPicker div {
+	  display: block;
+		cursor:pointer;
+		-webkit-transition: .25s ease;
+		-moz-transition: .25s ease;
+		-ms-transition: .25s ease;
+		-o-transition: .25s ease;
+		transition:  .25s ease;
+
+  }
+  .lightOption{
+		margin-left: 1.5vh;
+		margin-bottom: 2vh;
+		margin-top: 2vh; 
+		width: 6vh;
+		height: 6vh;
+		border-radius: 50%;
+    background-color: rgb(73, 73, 73);
+    opacity: 0.3;
+  }
+
+  .light {
+    background-color: rgb(255, 255, 0);
+  }
+
+  .audio {
+	  background-color: rgb(140, 0, 255);
+  }
+
+  .tv {
+	  background-color: rgb(0, 0, 0);
+  }
+
+  .lightOn {
+  opacity:1
   }

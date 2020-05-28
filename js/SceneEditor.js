@@ -95,17 +95,23 @@ function AddShadows() {
 
 }
 
+var firstTime = true
 function AllowMouseOverMesh(mesh){
     mesh.actionManager = new BABYLON.ActionManager(scene);
 	
 	//ON MOUSE ENTER
 	mesh.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){	
         //mesh.material.emissiveColor = BABYLON.Color3.Blue();
-        BoardMat.albedoTexture = boardPH
+        if(firstTime){
+            BoardMat.albedoTexture = boardPH
+        }
+
 	}));
 	
 	//ON MOUSE EXIT
 	mesh.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
-        BoardMat.albedoTexture = ""
+        if(firstTime){
+            BoardMat.albedoTexture = ""
+        }
 	}));
 }

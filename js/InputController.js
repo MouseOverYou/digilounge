@@ -1,12 +1,11 @@
 
-let LightSwitch = false
 let TVSwitch = false
 let showCommands = false
 $(document).keyup(function (e) {
 
   if (e.keyCode === 73) {
     console.log("i Keyboard")
-    LightSwitch =! LightSwitch
+    LightSwitch = !LightSwitch
     console.log(LightSwitch)
     if (LightSwitch) {
       TurnLightsOff()
@@ -16,9 +15,6 @@ $(document).keyup(function (e) {
     }
   }
 
-  if (e.keyCode === 85) {
-    StartAnim.restart()
-  }
 
   if (e.keyCode === 78) {
     MuteVideoStreaming()
@@ -27,74 +23,99 @@ $(document).keyup(function (e) {
 
   if (e.keyCode === 80) {
     console.log("p Keyboard")
-    TVSwitch =! TVSwitch
-    if(TVSwitch){
-      TurnTVOff()
-      
-    }
-    else{
-      TurnTVOn()
-    }
+
 
   }
 
-  if(e.keyCode === 74){
-    showCommands =! showCommands
-    if(showCommands){
+  if (e.keyCode === 74) {
+    showCommands = !showCommands
+    if (showCommands) {
       $('#debugLabel').css('z-index', 0)
     }
-    else{
+    else {
       $('#debugLabel').css('z-index', -1)
     }
 
 
   }
-  if(e.keyCode === 72){
-    console.log("h typed")
-    var state = document.getElementById("streamingDiv").style.zIndex
-    if(state == "0"){
-      document.getElementById("streamingDiv").style.zIndex ="5"
-    }
-    else{
-      document.getElementById("streamingDiv").style.zIndex = "0"
-    }
-  }
 
 });
 
-//UI controllers
-//Back button
-function show_backbutton() {
-  $('.back-zoom').addClass('open');
-}
-
-$('.back-zoom').on('click', function (e) {
-  e.preventDefault();
-  hide_backbutton();
-  TravelRotateCamBack();
-  RevealInfopoints(false);
-});
-
-function hide_backbutton() {
-  $('.back-zoom').removeClass('open');
-};
 
 
-//Infobox button
-//callinfobox button
-let showInfo = false;
-$(document).keyup(function (e) {
-  //if keypress "i"
-
-  if (e.keyCode === 73) {
-    //AddStreamingToTexture();
-  }
-  if (e.keyCode === 79) {
-    MuteVideoStreaming();
-  }
-});
-
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   e = e || window.event;
   console.log(e.target);
 }, false);
+
+var LightSwitchOn = true
+jQuery(document).ready(function ($) {
+
+  //COLOUR COATING
+
+  //ENVIRONMENT
+  $('.envOption').on('click', function () {
+    //console.log(this.id);
+    var envSelec = this.id
+    var state = document.getElementById("streamingDiv").style.zIndex
+    switch (envSelec) {
+      case "channel":
+        $(this).toggleClass('selectedEnv');
+        if (state == "5") {
+          document.getElementById("streamingDiv").style.zIndex = "0"
+        }
+        else {
+          document.getElementById("streamingDiv").style.zIndex = "5"
+        }
+        break;
+      case "pack":
+        StartAnim.restart()
+        break;
+    }
+
+    /* Remove all classes selectedColour from all child elements*/
+    //$('#envPicker *').removeClass('selectedEnv');
+    /* This switches on the selectedColour class for that div. */
+
+  });
+
+
+  //LIGHTSWITCHER
+  $('.lightOption').on('click', function () {
+
+    var btnSelect = this.id
+    switch (btnSelect) {
+      case "light":
+        LightSwitchOn = !LightSwitchOn
+        if (LightSwitchOn) {
+          UpdateAnimRate = true
+        }
+        else {
+          TurnLightsOff()
+
+        }
+        break;
+      case "audio":
+        MuteVideoStreaming();
+        break;
+      case "tv":
+        TVSwitch = !TVSwitch
+        if (TVSwitch) {
+          TurnTVOff()
+    
+        }
+        else {
+          TurnTVOn()
+        }
+          break;
+    }
+
+    $(this).toggleClass('lightOn');
+  });
+
+});
+
+
+function handleStreamingUI(state) {
+
+}

@@ -48,6 +48,18 @@
         </form>
     </div>
 
+    <!-- UI-->
+    <div id='UIHolder'>
+        <div id='envPicker'>
+            <div id='channel' class='envOption'></div>
+            <div id='pack' class='envOption '></div>
+        </div>
+        <div id='lightPicker'>
+            <div id= 'light' class='lightOption light lightOn'></div>
+            <div id = 'audio' class='lightOption audio lightOn'></div>
+            <div id = 'tv' class='lightOption tv lightOn'></div>
+        </div>
+    </div>
     <img class="logo" src="assets/Recordbay_Logo.png" alt="logo missing">
 
     <canvas id="renderCanvas" touch-action="none"></canvas> //touch-action="none" for best results from PEP
@@ -79,8 +91,6 @@
                         <div id="tool-circle" class="button circ"><i class="fa fa-circle-thin" aria-hidden="true"></i>
                         </div>
                         <div id="tool-type" class="button font"><i class="fa fa-font" aria-hidden="true"></i></div>
-
-
 
                         <div class="section rubber">
                             <div id="tool-eraser" class="button"><i class="fa fa-eraser" aria-hidden="true"></i></div>
@@ -139,7 +149,7 @@
     <script src="https://use.fontawesome.com/46af14eb3c.js"></script>
 
     <!-- partial -->
-    <script src="js/script.js"></script>
+    <script src="js/boardScript.js"></script>
     <img src="" id="imgConverted" style="position:absolute; z-index: -50;"></img>
 
     <script type="text/javascript" src="js/InputController.js"></script>

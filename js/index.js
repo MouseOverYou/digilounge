@@ -69,6 +69,7 @@ var createScene = function () {
 
         var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (mesh.name == "BoardColl" && mesh.isPickable); });
         if (pickInfo && pickInfo.pickedMesh) {
+            firstTime = false
             showUI = !showUI
             //alert(pickInfo.pickedMesh.name);
             CurrentSelection = pickInfo.pickedMesh.name.split('Board')[1];

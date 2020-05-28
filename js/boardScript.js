@@ -111,6 +111,7 @@ function initSketchpad() {
             sketchpad.getCurrentTool().setSize(e.target.value);
         }
     });
+    
 
     //save
     document.getElementById('tool-save').addEventListener("click", function () {
