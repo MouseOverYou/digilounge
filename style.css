@@ -6,6 +6,9 @@ body {
     margin: 0;
     padding: 0;
 }
+video {
+  pointer-events: none
+}
 
 .logo{
   position: absolute;

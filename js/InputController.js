@@ -50,9 +50,12 @@ jQuery(document).ready(function ($) {
         break;
     }
 
-    /* Remove all classes selectedColour from all child elements*/
-    //$('#envPicker *').removeClass('selectedEnv');
-    /* This switches on the selectedColour class for that div. */
+
+  });
+
+  $('.x-icon').on('click', function () {
+    handleWhiteBoard(false)
+
 
   });
 

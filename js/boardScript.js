@@ -264,15 +264,18 @@ initSketchpad();
 function handleWhiteBoard(showBoard) {
     var toolBox = document.querySelector(".toolbar");
     var boardBox = document.querySelector("#sketchpad");
+    var xIcon = document.querySelector(".x-icon");
 
     if (showBoard){
         toolBox.classList.add('open')
         boardBox.classList.add('open')
+        xIcon.classList.add('open')
     }
 
     else{
         toolBox.classList.remove('open')
         boardBox.classList.remove('open')
+        xIcon.classList.remove('open')
     }
 
 }

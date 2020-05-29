@@ -72,7 +72,31 @@
   position: relative;
 }
 
+/* X ICON */
+.x-icon {
+  top:-10vh;
+  text-align: center;
+  position: relative;
+  z-index: -1;
+  top: 0px;
+  font-size: 100px;
+  color: #fff;
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
 
+.x-icon.open {
+  top:-7vh;
+  z-index: 1;
+  opacity: 1;
+}
+
+.x-icon:hover {
+  color: #fa183d;
+}
 
 /* OTHER STYLES */
 
