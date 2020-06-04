@@ -64,9 +64,9 @@
     
     <canvas id="renderCanvas" touch-action="none"></canvas> //touch-action="none" for best results from PEP
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
+    <div class="container" style='pointer-events: none;'>
+        <div class="row" style='pointer-events: none;'>
+            <div class="col-md-3" style='pointer-events: none;'>
                 <div class="toolbar" id="tools">
                     <div class="section files">
                         <div id="reset" class="button"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" style='pointer-events: none;'>
                 <div id="sketchpad"></div>
             </div>
             <div class = "col-md-1">
